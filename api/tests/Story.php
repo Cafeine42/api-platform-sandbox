@@ -2,12 +2,12 @@
 
 namespace App\Tests;
 
-use App\Factory\GreetingFactory;
+use App\Factory\BookFactory;
 
 class Story extends \Zenstruck\Foundry\Story
 {
     public function build(): void
     {
-        GreetingFactory::createMany(5);
+        BookFactory::createMany(5);
     }
 }
