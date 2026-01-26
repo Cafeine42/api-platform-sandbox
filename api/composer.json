@@ -2,45 +2,55 @@
     "type": "project",
     "license": "MIT",
     "require": {
-        "php": ">=8.4",
+        "php": ">=8.5",
         "ext-ctype": "*",
         "ext-iconv": "*",
         "api-platform/doctrine-orm": "^4.2.11",
         "api-platform/symfony": "^4.2.11",
-        "doctrine/doctrine-bundle": "^2.7",
-        "doctrine/doctrine-migrations-bundle": "^3.2",
+        "doctrine/doctrine-bundle": "^3.2",
+        "doctrine/doctrine-migrations-bundle": "^4.0",
         "doctrine/orm": "^3.0",
         "nelmio/cors-bundle": "^2.2",
-        "phpdocumentor/reflection-docblock": "^5.6",
+        "phpdocumentor/reflection-docblock": "^5.2",
         "phpstan/phpdoc-parser": "^2.0",
-        "runtime/frankenphp-symfony": "^0.2",
-        "symfony/asset": "7.2.*",
-        "symfony/console": "7.2.*",
-        "symfony/dotenv": "7.2.*",
-        "symfony/expression-language": "7.2.*",
+        "symfony/asset": "8.0.*",
+        "symfony/console": "8.0.*",
+        "symfony/dotenv": "8.0.*",
+        "symfony/expression-language": "8.0.*",
         "symfony/flex": "^2.2",
-        "symfony/framework-bundle": "7.2.*",
-        "symfony/mercure-bundle": "^0.3.5",
-        "symfony/monolog-bundle": "^3.8",
-        "symfony/property-access": "7.2.*",
-        "symfony/property-info": "7.2.*",
-        "symfony/runtime": "7.2.*",
-        "symfony/security-bundle": "7.2.*",
-        "symfony/serializer": "7.2.*",
-        "symfony/twig-bundle": "7.2.*",
-        "symfony/validator": "7.2.*",
-        "symfony/yaml": "7.2.*"
+        "symfony/framework-bundle": "8.0.*",
+        "symfony/monolog-bundle": "^4",
+        "symfony/object-mapper": "8.1.x-dev",
+        "symfony/property-access": "8.0.*",
+        "symfony/property-info": "8.0.*",
+        "symfony/runtime": "8.0.*",
+        "symfony/security-bundle": "8.0.*",
+        "symfony/serializer": "8.0.*",
+        "symfony/twig-bundle": "8.0.*",
+        "symfony/validator": "8.0.*",
+        "symfony/yaml": "8.0.*"
     },
     "require-dev": {
-        "api-platform/schema-generator": "^5.0",
-        "symfony/browser-kit": "7.2.*",
-        "symfony/css-selector": "7.2.*",
-        "symfony/debug-bundle": "7.2.*",
+        "dama/doctrine-test-bundle": "^8.6",
+        "friendsofphp/php-cs-fixer": "^3.93",
+        "justinrainbow/json-schema": "^6.6",
+        "phpstan/extension-installer": "^1.4",
+        "phpstan/phpstan": "^2.1",
+        "phpstan/phpstan-doctrine": "^2.0",
+        "phpstan/phpstan-phpunit": "^2.0",
+        "phpstan/phpstan-symfony": "^2.0",
+        "phpunit/phpunit": "^12.5",
+        "rector/rector": "^2.3",
+        "symfony/browser-kit": "8.0.*",
+        "symfony/css-selector": "8.0.*",
+        "symfony/debug-bundle": "8.0.*",
+        "symfony/http-client": "8.0.*",
         "symfony/maker-bundle": "^1.44",
-        "symfony/phpunit-bridge": "7.2.*",
-        "symfony/stopwatch": "7.2.*",
-        "symfony/var-dumper": "7.2.*",
-        "symfony/web-profiler-bundle": "7.2.*"
+        "symfony/phpunit-bridge": "8.0.*",
+        "symfony/stopwatch": "8.0.*",
+        "symfony/var-dumper": "8.0.*",
+        "symfony/web-profiler-bundle": "8.0.*",
+        "zenstruck/foundry": "^2.8"
     },
     "config": {
         "optimize-autoloader": true,
@@ -49,6 +59,7 @@
         },
         "sort-packages": true,
         "allow-plugins": {
+            "phpstan/extension-installer": true,
             "symfony/flex": true,
             "symfony/runtime": true
         }
@@ -86,6 +97,14 @@
         ],
         "post-update-cmd": [
             "@auto-scripts"
+        ],
+        "quality": [
+            "vendor/bin/php-cs-fixer fix",
+            "vendor/bin/phpstan analyse",
+            "vendor/bin/rector"
+        ],
+        "test": [
+            "bin/phpunit"
         ]
     },
     "conflict": {
@@ -94,7 +113,7 @@
     "extra": {
         "symfony": {
             "allow-contrib": false,
-            "require": "7.2.*",
+            "require": "8.0.*",
             "docker": false
         }
     }
