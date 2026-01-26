@@ -15,6 +15,6 @@ class UpdateBook
     #[Assert\NotBlank(allowNull: true)]
     public string $title;
 
-    #[Map(if: IsNotNullCondition::class, transform: ApiAuthorToAuthorTransformer::class)]
-    public ?ApiAuthor $author = null;
+    //    #[Map(if: IsNotNullCondition::class, transform: ApiAuthorToAuthorTransformer::class)]
+    public ApiAuthor $author;
 }

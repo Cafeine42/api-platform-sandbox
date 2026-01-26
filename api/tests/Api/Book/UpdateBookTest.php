@@ -35,7 +35,7 @@ class UpdateBookTest extends ApiTestCase
             '@id' => '/books/'.$book->getId(),
             '@type' => 'Book',
             'title' => 'New Title',
-            //            'author' => '/authors/'.$book->getAuthor()->getId(),
+            'author' => '/authors/'.$book->getAuthor()?->getId(),
         ]);
     }
 }
