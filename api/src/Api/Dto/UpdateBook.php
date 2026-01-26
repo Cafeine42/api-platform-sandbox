@@ -7,14 +7,13 @@ use App\Entity\Book;
 use App\ObjectMapper\ApiAuthorToAuthorTransformer;
 use App\ObjectMapper\Condition\IsNotNullCondition;
 use Symfony\Component\ObjectMapper\Attribute\Map;
-use Symfony\Component\Validator\Constraints as Assert;
 
 #[Map(target: Book::class)]
 class UpdateBook
 {
-    #[Assert\NotBlank(allowNull: true)]
     public string $title;
 
+    #[Map(transform: ApiAuthorToAuthorTransformer::class)]
     //    #[Map(if: IsNotNullCondition::class, transform: ApiAuthorToAuthorTransformer::class)]
-    public ApiAuthor $author;
+    public ?ApiAuthor $author = null;
 }

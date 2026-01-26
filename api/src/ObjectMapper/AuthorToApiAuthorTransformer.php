@@ -19,9 +19,13 @@ final readonly class AuthorToApiAuthorTransformer implements TransformCallableIn
     {
     }
 
-    public function __invoke(mixed $value, object $source, ?object $target): ApiAuthor
+    public function __invoke(mixed $value, object $source, ?object $target): ?ApiAuthor
     {
-        Assert::isInstanceOf($value, Author::class, sprintf('expect an instance of %s', Author::class));
+        Assert::nullOrIsInstanceOf($value, Author::class, sprintf('expect an instance of %s', Author::class));
+
+        if (null === $value) {
+            return null;
+        }
 
         return $this->objectMapper->map($value, ApiAuthor::class);
     }

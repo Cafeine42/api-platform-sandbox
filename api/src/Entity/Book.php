@@ -16,8 +16,8 @@ class Book
     private string $title = '';
 
     #[ORM\ManyToOne]
-    #[ORM\JoinColumn(nullable: false)]
-    private Author $author;
+    #[ORM\JoinColumn(nullable: true)]
+    private ?Author $author = null;
 
     public function getId(): ?int
     {
@@ -41,7 +41,7 @@ class Book
         return $this->author;
     }
 
-    public function setAuthor(Author $author): static
+    public function setAuthor(?Author $author): static
     {
         $this->author = $author;
 

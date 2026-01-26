@@ -14,7 +14,6 @@ use App\Api\Dto\UpdateBook;
 use App\Entity\Book;
 use App\ObjectMapper\AuthorToApiAuthorTransformer;
 use Symfony\Component\ObjectMapper\Attribute\Map;
-use Symfony\Component\Validator\Constraints as Assert;
 
 #[ApiResource(
     shortName: 'Book',
@@ -38,11 +37,9 @@ class ApiBook
     #[ApiProperty(identifier: true)]
     public ?int $id = null;
 
-    #[Assert\NotBlank]
     #[Map(source: 'title')]
     public string $title = '';
 
-    #[Assert\NotNull]
     #[Map(transform: AuthorToApiAuthorTransformer::class)]
     public ?ApiAuthor $author = null;
 }
