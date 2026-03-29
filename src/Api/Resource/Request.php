@@ -25,10 +25,10 @@ use App\Enum\RequestStatus;
             uriTemplate: '/make_requests/{id}',
             requirements: ['id' => '\d+'],
             input: PatchApplicationRequestDto::class,
+            output: OutputDto::class
         ),
     ],
     stateOptions: new Options(entityClass: ApplicationRequest::class),
-    output: OutputDto::class
 )]
 class Request
 {

@@ -23,7 +23,6 @@ use App\Enum\ResponseStatus;
         new Delete(
             uriTemplate: '/trackings/{id}',
             requirements: ['id' => '\d+'],
-            map: false, // FIXME : When no
         ),
     ],
     stateOptions: new Options(entityClass: ApplicationRequest::class),
